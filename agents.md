@@ -1,6 +1,6 @@
 # bento/slides — for AI agents
 
-**Guide version `2026.9.2`** · document format `bento/slides` (v1). This
+**Guide version `2026.9.3`** · document format `bento/slides` (v1). This
 guide matches the bento/slides shell of the same version. A deck's `#bento-doc`
 JSON is always the source of truth — if it was written by a newer shell it may
 carry features beyond this guide; unknown keys are ignored, never fatal.
@@ -501,7 +501,10 @@ points here.
   `beta-closing`. Each text element has a `role` and a `placeholder`; footer
   chrome shares ids so it morphs. Start from a template at
   `/templates/client-pitch.bento.html`, `/templates/insight-brief.bento.html`
-  or `/templates/workshop.bento.html`.
+  or `/templates/workshop.bento.html`. `/templates/blank.bento.html` is the
+  same design system with one empty cover slide; it is what
+  `slides.betamobility.ai/new` clones, and it is the right start only when the
+  three shaped templates all fit badly.
 - `meta.company` is `Beta Mobility`; set `meta.author`. Title slides and
   footers use `{{company}}`, `{{author}}`, `{{date}}`, `{{page:2}}`.
 - A deck records the design-system version it was generated from in a
