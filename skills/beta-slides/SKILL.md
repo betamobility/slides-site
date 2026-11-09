@@ -249,7 +249,7 @@ that moved travel to their new place and new tokens fade in.
    ```
 
    A deck that exists only as a finished file is saved by the user instead:
-   they open it and pick **Share → Save to Beta**. **A deck that is already
+   they open it and pick **Share → Save to the cloud**. **A deck that is already
    in the store is changed only with `splice.mjs`.** There is no hand-written
    replace: the tool reads the deck, keeps what people arranged, and writes
    back only if nobody saved in between.
@@ -628,9 +628,17 @@ upload then fails, the error carries the deck id, and you finish with
   is not framing-checked: the site is the one the person already chose.
 - **`--dry-run`** reads the deck and prints the plan without writing. Run it
   first.
-- An encrypted deck is refused; the tool does not decrypt. A deck that is in
-  a live session while the tool writes is unsupported: collaborators are not
-  told the store copy changed.
+- An encrypted deck is refused; the tool does not decrypt. A deck that is
+  open in someone's tab (not in a live session) while the tool writes takes
+  the write in: a tab with nothing unsaved reloads onto it, and a tab with
+  unsaved edits merges it into what the person is doing, on its next save or
+  when it next takes focus.
+  Where you and the person changed the same element, the person's version
+  stays (the store keeps yours in the deck's version history), so edit what
+  you were asked to and leave the rest alone. Encrypted decks and shells
+  from release 2026.11.2 or earlier still lock instead of merging. A deck in
+  a live session while the tool writes is still unsupported: it has not been
+  tested, so ask the people in it to stop editing first.
 
 ### The scene library: insert a reviewed scene, change its settings
 
@@ -825,11 +833,11 @@ cannot be changed from there: the user edits it in the editor, or you change
 it from a shell that has `node`.
 
 > Open the file (download it and double-click, or drag it into Chrome), then
-> **Share → Save to Beta**. A store tab opens, you sign in, and you get back a
+> **Share → Save to the cloud**. A store tab opens, you sign in, and you get back a
 > `slides.betamobility.ai/d/<id>` link. From then on ⌘S in that tab saves back
 > in place.
 
-Save to Beta appears in the Share panel whenever the deck is open off the
+Save to the cloud appears in the Share panel whenever the deck is open off the
 store origin, and it needs a valid `@betamobility.io` identity. Anyone else
 gets the login page and keeps the file, which is a complete deck with the
 editor and Export PPTX already in it. Say that plainly rather than reporting
